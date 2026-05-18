@@ -1,28 +1,30 @@
-import { useState } from 'react';
-import { ListaPublicaciones } from './components/listaPublicaciones';
-import { ListaHistorias } from './components/listaHistorias';
-import { ListaSugerencias } from './components/listaSugerencias';
-import { ListaBotones } from './components/listaBotones';
-import './index.css'
-import './App.css'
+import { useEffect, useState } from 'react';
+import Header from './components/Header/Header';
+import Feed from './components/Feed/Feed';
+import Perfil from './components/Perfil/Perfil';
+import ModalPublicacion from './components/ModalPublicacion/ModalPublicacion';
+import './index.css';
+import './App.css';
+import api from './api/the-cat-api';
 
 function App() {
   const [publicaciones, setPublicaciones] = useState([]);
-  const [historias, setHistorias] = useState([]);
-  const [sugerencias, setSugerencias] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState('');
-  const [publicacionSeleccionadaId, setPublicacionSeleccionadaId] = useState(null);
+  const [publicacionSeleccionada, setPublicacionSeleccionada] = useState(null);
 
-const busquedaPublicacion = async (query) => {
-    setCargando(true);
-    setError('');
-    
+  useEffect(() => {
+    cargarPublicaciones();
+  }, []);
+
+  const cargarPublicaciones = async () => {
     try {
-      
-    }
-    catch {
-
+      const respuesta = await api.get(
+        'images/search?limit=20'
+      );
+      setPublicaciones(respuesta.data);
+    } catch (err) {
+      setError('Error cargando gatos');
     }
   };
 
@@ -31,30 +33,32 @@ const busquedaPublicacion = async (query) => {
 
       <div className='pagina'>
 
-        <div className='izquierda'>
-          <h1>Instagram</h1>
-          <ListaBotones /> 
-        </div>
+        <Header />
 
-        <div className='historias'>
-          {!cargando && !error && historias.length > 0 && (
-            <ListaHistorias />
-          )}
-        </div>
+        <div className='pagina-body'>
+          <div className='izquierda'>
+            <h1>Instagram</h1>
+          </div>
 
-        <div className='sugerencias'>
-          {!cargando && !error && sugerencias.length > 0 && (
-            <ListaSugerencias />
-          )}
-        </div>
+          <div className='publicaciones'>
+            {error && <p className="error">{error}</p>}
+            {!error && publicaciones.length === 0 && <p>Cargando publicaciones...</p>}
+            {!error && publicaciones.length > 0 && (
+              <Feed publicaciones={publicaciones} onSelect={(p) => setPublicacionSeleccionada(p)} />
+            )}
+          </div>
 
-        <div className='publicaciones'> 
-          {!cargando && !error && publicaciones.length > 0 && (
-          <ListaPublicaciones />
-          )}
+          <div className='perfil-side'>
+            <Perfil />
+          </div>
         </div>
-          
+        {publicacionSeleccionada && (
+          <ModalPublicacion publicacion={publicacionSeleccionada} onClose={() => setPublicacionSeleccionada(null)} />
+        )}
+        
       </div>
     </>
   )
 };
+
+export default App;
