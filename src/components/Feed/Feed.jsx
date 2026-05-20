@@ -1,10 +1,16 @@
 import React from 'react';
-import ListaPublicaciones from '../ListaPublicaciones/ListaPublicaciones';
+import Publicacion from '../Publicacion/Publicacion';
 
-export default function Feed({ publicaciones = [], onSelect }) {
+export default function Feed({ publicaciones = [], seleccionar }) {
   return (
     <main className="feed">
-      <ListaPublicaciones publicaciones={publicaciones} onSelect={onSelect} />
+        {publicaciones.map((publi) => (
+          <Publicacion
+            key={publi.id}
+            publicacion={publi}
+            seleccionar={seleccionar}
+          />
+        ))}
     </main>
   );
 }

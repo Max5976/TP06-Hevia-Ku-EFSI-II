@@ -20,7 +20,7 @@ function App() {
   const cargarPublicaciones = async () => {
     try {
       const respuesta = await api.get(
-        'images/search?limit=20'
+        'images/search?limit=50'
       );
       setPublicaciones(respuesta.data);
     } catch (err) {
@@ -35,16 +35,17 @@ function App() {
 
         <Header />
 
-        <div className='pagina-body'>
+        <div className='pagina-sin-header'>
           <div className='izquierda'>
             <h1>Instagram</h1>
           </div>
 
           <div className='publicaciones'>
             {error && <p className="error">{error}</p>}
+                    
             {!error && publicaciones.length === 0 && <p>Cargando publicaciones...</p>}
             {!error && publicaciones.length > 0 && (
-              <Feed publicaciones={publicaciones} onSelect={(p) => setPublicacionSeleccionada(p)} />
+              <Feed publicaciones={publicaciones} seleccionar={(publicacion) => setPublicacionSeleccionada(publicacion)} />
             )}
           </div>
 
