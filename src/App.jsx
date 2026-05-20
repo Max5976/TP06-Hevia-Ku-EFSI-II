@@ -36,9 +36,6 @@ function App() {
         <Header />
 
         <div className='pagina-sin-header'>
-          <div className='izquierda'>
-            <h1>Instagram</h1>
-          </div>
 
           <div className='publicaciones'>
             {error && <p className="error">{error}</p>}
@@ -54,7 +51,7 @@ function App() {
           </div>
         </div>
         {publicacionSeleccionada && (
-          <ModalPublicacion publicacion={publicacionSeleccionada} onClose={() => setPublicacionSeleccionada(null)} />
+          <ModalPublicacion publicacion={publicacionSeleccionada} cerrarModal={() => setPublicacionSeleccionada(null)} />
         )}
         
       </div>

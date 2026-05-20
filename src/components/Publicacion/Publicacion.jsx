@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 
-export default function Publicacion({ publicacion, onSelect }) {
-  const [liked, setLiked] = useState(false);
+export default function Publicacion({ publicacion, seleccionar }) {
+  const [likeado, setLikeado] = useState(false);
   const [likes, setLikes] = useState(publicacion?.likes ?? Math.floor(Math.random() * 500) + 20);
 
-	const handleLike = (e) => {
-		e.stopPropagation();
-		if (!liked) {
+	const llevarACaboLike = (likear) => {
+		likear.stopPropagation();
+		if (!likeado) {
 			setLikes(likes + 1);
-			setLiked(true);
+			setLikeado(true);
 		} else {
 			setLikes(likes - 1);
-			setLiked(false);
+			setLikeado(false);
 		}
 	};
 
   const imageUrl = publicacion?.url || (publicacion?.image && publicacion.image.url) || '';
 
   return (
-    <article className="publicacion" onClick={() => onSelect && onSelect(publicacion)}>
+    <article className="publicacion" onClick={() => seleccionar && seleccionar(publicacion)}>
       <header className="pub-header">
         <img className="avatar" src="/avatar-placeholder.png" alt="avatar" />
         <div className="usuario">
@@ -32,7 +32,7 @@ export default function Publicacion({ publicacion, onSelect }) {
       </div>
 
       <div className="pub-actions">
-        <button type="button" className="like-btn" onClick={handleLike} aria-label="Like">
+        <button type="button" className="like-btn" onClick={llevarACaboLike} aria-label="Like">
           <svg width="20" height="20" viewBox="0 0 24 24" fill={liked ? '#e0245e' : 'none'} xmlns="http://www.w3.org/2000/svg">
             <path d="M3.172 5.172a4 4 0 015.656 0L12 8.343l3.172-3.171a4 4 0 115.656 5.656L12 21.657 3.172 10.828a4 4 0 010-5.656z" stroke="#111" strokeWidth="0.8" />
           </svg>
