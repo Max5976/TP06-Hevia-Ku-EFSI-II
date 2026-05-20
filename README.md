@@ -60,3 +60,6 @@ Los datos que se muestran en la barra lateral del perfil son:
 3. Instalar las dependencias de Node ejecutando:
    ```bash
    npm install
+4. Iniciar el servidor de desarrollo de Vite con el comando:
+   ```bash
+   npm run dev
