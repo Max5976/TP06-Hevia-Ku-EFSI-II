@@ -2,14 +2,6 @@
 
 Aplicación web inspirada en la interfaz de Instagram, desarrollada en React con Vite. En lugar de fotos de usuarios, el feed se alimenta con imágenes reales obtenidas de **The Cat API**.
 
-## 🛠️ Stack tecnológico
-
-| Tecnología | Versión | Uso |
-|---|---|---|
-| React | 19 | Biblioteca de UI |
-| Vite | 8 | Bundler y servidor de desarrollo |
-| Axios | 1.16 | Llamadas HTTP a The Cat API |
-
 ---
 
 ## 🏗️ Estructura del proyecto
