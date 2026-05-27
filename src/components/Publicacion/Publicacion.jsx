@@ -4,16 +4,16 @@ export default function Publicacion({ publicacion, seleccionar }) {
   const [likeado, setLikeado] = useState(false);
   const [likes, setLikes] = useState(publicacion?.likes ?? Math.floor(Math.random() * 500) + 20);
 
-	const llevarACaboLike = (likear) => {
-		likear.stopPropagation();
-		if (!likeado) {
-			setLikes(likes + 1);
-			setLikeado(true);
-		} else {
-			setLikes(likes - 1);
-			setLikeado(false);
-		}
-	};
+  const llevarACaboLike = (likear) => {
+    likear.stopPropagation();
+    if (!likeado) {
+      setLikes(likes + 1);
+      setLikeado(true);
+    } else {
+      setLikes(likes - 1);
+      setLikeado(false);
+    }
+  };
 
   const imageUrl = publicacion?.url || (publicacion?.image && publicacion.image.url) || '';
 
@@ -21,7 +21,8 @@ export default function Publicacion({ publicacion, seleccionar }) {
     <>
       <article className="publicacion" onClick={() => seleccionar && seleccionar(publicacion)}>
         <header className="pub-header">
-          <img className="avatar" src="/avatar-placeholder.png" alt="avatar" />
+          {}
+          <img className="avatar" src="https://cataas.com/cat?width=50&height=50" alt="avatar" />
           <div className="usuario">
             <strong>gatito_usuario</strong>
             <span>Ubicación</span>
@@ -68,4 +69,3 @@ export default function Publicacion({ publicacion, seleccionar }) {
     </>
   );
 }
-

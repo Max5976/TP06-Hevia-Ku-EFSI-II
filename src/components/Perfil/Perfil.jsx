@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Perfil({ usuario }) {
-  const data = usuario || {
+export default function Perfil({ avatarApi }) {
+  const data = {
     username: 'mi_usuario',
-    avatar: '/public/avatar-placeholder.png',
+    avatar: avatarApi || 'https://cdn2.thecatapi.com/images/1.jpg', 
     bio: 'Amante de los gatos',
     publicaciones: 12,
     seguidores: 340,
@@ -12,7 +12,11 @@ export default function Perfil({ usuario }) {
 
   return (
     <aside className="perfil">
-      <img src={data.avatar} alt={data.username} className="perfil-avatar" />
+      {}
+      <div className="perfil-avatar-borde">
+        <img src={data.avatar} alt={data.username} className="perfil-avatar" />
+      </div>
+      
       <div className="perfil-info">
         <h3>{data.username}</h3>
         <p>{data.bio}</p>
