@@ -84,7 +84,7 @@ El **lifting state up** se aplica en el like del modal: `Publicacion` llama a `s
 
 ```bash
 # 1. Clonar el repositorio
-git clone <url-del-repo>
+git clone https://github.com/Max5976/TP06-Hevia-Ku-EFSI-II.git
 cd TP06-Hevia-Ku-EFSI-II-main
 
 # 2. Instalar dependencias
