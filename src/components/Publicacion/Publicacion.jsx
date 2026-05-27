@@ -34,7 +34,7 @@ export default function Publicacion({ publicacion, seleccionar }) {
 
         <div className="pub-actions">
           <button type="button" className="like-btn" onClick={llevarACaboLike} aria-label="Like">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill={liked ? '#e0245e' : 'none'} xmlns="http://www.w3.org/2000/svg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill={likeado ? '#e0245e' : 'none'} xmlns="http://www.w3.org/2000/svg">
               <path d="M3.172 5.172a4 4 0 015.656 0L12 8.343l3.172-3.171a4 4 0 115.656 5.656L12 21.657 3.172 10.828a4 4 0 010-5.656z" stroke="#111" strokeWidth="0.8" />
             </svg>
           </button>
